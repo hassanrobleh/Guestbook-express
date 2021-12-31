@@ -5,8 +5,10 @@ const port = 3000
 
 app.set('view engine', 'ejs')
 
+app.use('/assets', express.static('public'))
+
 app.get('/', (req, res) => {
-    res.render('index', {})
+    res.render('pages/index', {message: 'Hello there!'})
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
