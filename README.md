@@ -2,7 +2,7 @@
 
 # Getting Started
 ```bash
-$ git clone https://github.com/hassanrobleh/Design-Pattern-Abstract-Factory.git
+$ https://github.com/hassanrobleh/Guestbook-express.git
 $ cd Guestbook-express
 $ npm install
 $ npm start
