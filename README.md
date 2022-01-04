@@ -4,6 +4,6 @@
 ```bash
 $ https://github.com/hassanrobleh/Guestbook-express.git
 $ cd Guestbook-express
-$ npm installe
+$ npm install
 $ npm start
 ```
