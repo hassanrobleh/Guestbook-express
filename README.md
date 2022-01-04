@@ -5,5 +5,5 @@
 $ https://github.com/hassanrobleh/Guestbook-express.git
 $ cd Guestbook-express
 $ npm install
-$ npm start
+$ npm starts
 ```
