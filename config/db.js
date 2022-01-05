@@ -1,8 +1,8 @@
 
-require('babel-register')
-const mysql = require('mysql');
+//require('babel-register')
+import mysql from 'mysql';
 
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
     host     : 'localhost',
     database : 'livredor',
     user     : 'root',
@@ -10,7 +10,7 @@ const db = mysql.createConnection({
 
 })
 
-db.connect((err) => {
+connection.connect((err) => {
     if(err) {
         console.log(err.message)
     } else {
@@ -18,4 +18,4 @@ db.connect((err) => {
     }
 })
 
-module.exports = db
+export default connection

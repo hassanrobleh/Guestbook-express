@@ -1,5 +1,5 @@
 
-module.exports = (req, res, next) => {
+export const flash = (req, res, next) => {
 
     if(req.session.flash) {
         res.locals.flash = req.session.flash
@@ -16,3 +16,5 @@ module.exports = (req, res, next) => {
 
     next()
 }
+
+//export default flash

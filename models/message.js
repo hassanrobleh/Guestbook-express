@@ -1,9 +1,7 @@
 
-let connection = require('../config/db')
+import connection from '../config/db.js'
+import moment from 'moment';
 
-const moment = require('moment');
-//import moment from 'moment';
-//moment().format();
 
 class Message {
 
@@ -36,4 +34,6 @@ class Message {
     }
 }
 
-module.exports = Message
+//module.exports = Message
+export default Message
+

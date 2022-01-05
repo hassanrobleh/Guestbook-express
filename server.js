@@ -1,10 +1,12 @@
-const express = require('express')
-//const bodyParser = require('body-parser')
+import express from 'express'
+
+import session from 'express-session'
+import { flash } from './middleware/flash.js'
+import Message from './models/message.js'
+
+const port = 3000
 
 const app = express()
-const session = require('express-session')
-const flash = require('./middleware/flash')
-const port = 3000
 
 // Moteur de template
 app.set('view engine', 'ejs')
@@ -36,7 +38,7 @@ app.get('/', (req, res) => {
     //     req.session.error = undefined
     // }
     //console.log(req.session)
-    const Message = require('./models/message')
+
 
     Message.all((messages) => {
         res.render('pages/index', {messages: messages})
@@ -52,7 +54,7 @@ app.post('/', (req, res) => {
             req.flash('error', 'Vous n\'avez pas posté de message')
         res.redirect('/')
     } else {
-        const Message = require('./models/message')
+        //const Message = require('./models/message')
          Message.create(req.body.message, () => {
              req.flash('success', 'Merci !')
              res.redirect('/')
