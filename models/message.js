@@ -1,8 +1,23 @@
 
 let connection = require('../config/db')
 
+const moment = require('moment');
+//import moment from 'moment';
+//moment().format();
+
 class Message {
 
+    constructor(row) {
+        this.row = row
+    }
+
+    get content() {
+        return this.row.content
+    }
+
+    get create_at() {
+        return moment(this.row.create_at)
+    }
 
     static create(content, cb) {
 
@@ -15,7 +30,7 @@ class Message {
     static all(cb) {
         connection.query('SELECT * FROM messages', (error, rows) => {
             if(error) throw error
-            cb(rows)
+            cb(rows.map((row) => new Message(row)))
         })
 
     }
