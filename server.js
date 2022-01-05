@@ -46,6 +46,11 @@ app.post('/', (req, res) => {
         req.flash('error', 'Vous n\'avez pas posté de message')
         res.redirect('/')
     } else {
+        let Message = require('./models/message')
+        Message.create(req.body.message, () => {
+            req.flash('success', 'Merci !')
+            res.redirect('/')
+        })
 
     }
 })
