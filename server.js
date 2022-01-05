@@ -36,21 +36,27 @@ app.get('/', (req, res) => {
     //     req.session.error = undefined
     // }
     //console.log(req.session)
-    res.render('pages/index')
+    const Message = require('./models/message')
+
+    Message.all((messages) => {
+        res.render('pages/index', {messages: messages})
+    })
+
+    //res.render('pages/index')
 })
 
 app.post('/', (req, res) => {
     if(req.body.message === undefined || req.body.message === '') {
         //res.render('pages/index', {error: 'Vous n\'avez pas entré de message :('})
         //req.session.error = 'Il y a une erreur'
-        req.flash('error', 'Vous n\'avez pas posté de message')
+            req.flash('error', 'Vous n\'avez pas posté de message')
         res.redirect('/')
     } else {
-        let Message = require('./models/message')
-        Message.create(req.body.message, () => {
-            req.flash('success', 'Merci !')
-            res.redirect('/')
-        })
+        const Message = require('./models/message')
+         Message.create(req.body.message, () => {
+             req.flash('success', 'Merci !')
+             res.redirect('/')
+         })
 
     }
 })

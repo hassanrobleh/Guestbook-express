@@ -1,11 +1,21 @@
-let mysql      = require('mysql');
-let connection = mysql.createConnection({
+
+require('babel-register')
+const mysql = require('mysql');
+
+const db = mysql.createConnection({
     host     : 'localhost',
+    database : 'livredor',
     user     : 'root',
-    password : 'root',
-    database : 'livredor'
-});
+    password : '1234',
 
-connection.connect();
+})
 
-module.exports = connection
+db.connect((err) => {
+    if(err) {
+        console.log(err.message)
+    } else {
+        console.log('Connected !')
+    }
+})
+
+module.exports = db
