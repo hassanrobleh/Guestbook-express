@@ -14,7 +14,15 @@
     <h3 class="ui dividing hearder">Commentaires</h3>
     <% for (message of messages) { %>
         <div class="comment">
+            <a class="avatar">
+                <img src="https://randomuser.me/api/portraits/lego/2.jpg" alt="">
+            </a>
             <div class="content">
+                <div class="metadata">
+                    <div class="data">
+                        <%= message.create_at %>
+                    </div>
+                </div>
                 <div class="test"><%= message.content %></div>
             </div>
         </div>
