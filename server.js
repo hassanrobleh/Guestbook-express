@@ -3,6 +3,7 @@ import express from 'express'
 import session from 'express-session'
 import { flash } from './middleware/flash.js'
 import Message from './models/message.js'
+import message from "./models/message.js";
 
 const port = 3000
 
@@ -61,6 +62,13 @@ app.post('/', (req, res) => {
          })
 
     }
+})
+
+app.get('/message/:id', (req, res) => {
+    const id = req.params.id
+    Message.find(id, (message) => {
+        res.render('pages/show', {message: message})
+    })
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

@@ -9,6 +9,10 @@ class Message {
         this.row = row
     }
 
+    get id() {
+        return this.row.id
+    }
+
     get content() {
         return this.row.content
     }
@@ -30,7 +34,14 @@ class Message {
             if(error) throw error
             cb(rows.map((row) => new Message(row)))
         })
+    }
 
+    static find(id, cb) {
+        connection.query('SELECT id FROM messages WHERE id = ? LIMIT 1', [id], (error, rows) => {
+            if(error) throw error
+
+            cb(new Message(rows[0]))
+        })
     }
 }
 
